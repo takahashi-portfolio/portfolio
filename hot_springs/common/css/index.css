@@ -257,7 +257,6 @@ ol {
   font-size: 1.2rem;
   letter-spacing: 5px;
   line-height: 2.5;
-  min-height: 20rem;
   color: var(--gold);
 }
 
@@ -961,8 +960,9 @@ time b {
   #concept {grid-template-columns: 1fr;}
   .vertical-text {
     font-size: 1.1rem;
-    height: 20rem;
     align-self: center;
+    writing-mode: horizontal-tb;
+    margin-top: 2rem;
   }
 
   #concept {flex-direction: column;}
