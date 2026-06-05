@@ -253,7 +253,7 @@ const mm = gsap.matchMedia();
 /* ========================================
    Horizontal Scroll (PC only)
 ======================================== */
-mm.add("(min-width: 769px)", () => {
+mm.add("(min-width: 1025px)", () => {
   const panels = gsap.utils.toArray(".panel");
 
   gsap.to(panels, {
@@ -278,7 +278,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(anchor.getAttribute("href"));
     if (!target) return;
 
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       gsap.to(window, {
         duration: 0.3,
         ease: "power1.out",
@@ -377,7 +377,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 ======================================== */
 (function mobileAccordion() {
   $(".modal-right").on("click", function () {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       $(this).toggleClass("is-open");
     }
   });
