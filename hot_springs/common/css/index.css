@@ -956,7 +956,7 @@ time b {
 
   .mainv_caption {right: 2rem;}
   .mainv_caption h1 {font-size: 18px;}
-  .vertical-text {font-size: 1.1rem;}
+  .vertical-text {font-size: 1.1rem; align-self: center; height:20rem;}
 
   #concept {flex-direction: column;}
 
