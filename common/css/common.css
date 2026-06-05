@@ -1,0 +1,777 @@
+/* =========================================================
+   Variables (変数定義)
+========================================================= */
+
+:root {
+    /* --- Base Colors --- */
+    --black: #121212;
+    --white: #e0e0e0;
+    --gold: #c5a880;
+    --gold-hover: #b3966e;
+    --brown: #665742;
+    --gray: #a9b2b9;
+    --red: #c48080;
+
+    /* --- RGB for rgba() --- */
+    --rgb-theme-black: 18, 18, 18;    /* #121212 */
+    --rgb-pure-white: 255, 255, 255;  /* #ffffff */
+    --rgb-pure-black: 0, 0, 0;        /* #000000 */
+
+    /* --- Typography --- */
+    --font-main: "Zen Maru Gothic", sans-serif;
+
+    /* --- Utilities --- */
+    --header-height: 0px;
+    --transition-base: .4s ease;
+    --transition-slow: .5s ease;
+}
+
+/* =========================================================
+   Reset
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+}
+
+/* =========================================================
+   Base
+========================================================= */
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--black);
+
+    font-family: var(--font-main);
+    font-weight: 300;
+    line-height: 1.8;
+
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+h2 {
+    position: relative;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 4px;
+}
+
+h2:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    width: 1rem;
+    height: 1.5px;
+    background: var(--black);
+}
+
+h3 {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+ul.list1 {
+    padding: 0;
+}
+
+ul.list1 li {
+    position: relative;
+    display: block;
+    padding-left: 1.5rem;
+    margin: 0 2rem 0.5rem 0;
+}
+
+ul.list1 li:before {
+    position: absolute;
+    content: "";
+    top: 0.8rem;
+    left: 0.3rem;
+    width: 3px;
+    height: 3px;
+    background-color: var(--black);
+    border-radius: 50%;
+}
+
+::selection {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+::-moz-selection {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* =========================================================
+   Horizontal Scroll Layout
+========================================================= */
+
+/* 横スクロール全体 */
+.container {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 400vw;
+    height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding-top: 3rem;
+    }
+}
+
+/* 各パネル */
+.panel {
+    position: relative;
+    width: 100vw;
+    min-width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .panel {
+        width: 100%;
+        min-width: auto;
+        min-height: 100vh;
+        height: auto;
+    }
+}
+
+.panel_inner {
+    display: flex;
+    flex-direction: column;
+    max-width: 2222px;
+    width: 86%;
+    margin: 0 7%;
+}
+
+/* =========================================================
+   Panel Design
+========================================================= */
+
+.panel00 {
+    background: url("../img/mainv.png") center center / cover no-repeat;
+}
+
+.panel00::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(var(--rgb-theme-black), 0) 20%,
+        rgba(var(--rgb-theme-black), 0.9) 100%
+    );
+}
+
+.panel00 .typing {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+.panel00 .typing:after {
+    content: "|";
+    animation: blink .8s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.panel01 {
+    position: relative;
+    background-color: var(--gray);
+    background-image: radial-gradient(
+        rgba(var(--rgb-pure-white), 0.05) 1px,
+        transparent 1px
+    );
+    background-size: 18px 18px;
+}
+
+.panel01 .grid3_1 {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 3rem;
+    grid-template-areas: "paragraph image";
+}
+
+.panel01 .grid3_1 > p {
+    grid-area: paragraph;
+}
+
+.panel01 .grid3_1 > div {
+    grid-area: image;
+}
+
+@media screen and (max-width: 768px) {
+    .panel01 .grid3_1 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "image"
+            "paragraph";
+    }
+
+    .panel01 .grid3_1 > div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .panel01 .grid3_1 > div img {
+        width: 60%;
+    }
+}
+
+.panel02 {
+    background-color: var(--gold);
+}
+
+.panel03 h2 {
+    color: var(--white);
+}
+
+.panel03 h2:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    width: 1rem;
+    height: 1.5px;
+    background: var(--white);
+}
+
+.panel03 h3 {
+    margin-bottom: 0.5rem;
+}
+
+.panel03 {
+    background-color: var(--black);
+}
+
+.panel03 p {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.panel03 .grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.panel03 .item {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-slow);
+    background-color: var(--white);
+    color: var(--black);
+    padding: 1rem;
+}
+
+.panel03 .item:hover {
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+.panel03 .item:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 70px 70px;
+    border-color: transparent transparent var(--gold-hover) transparent;
+    transition: var(--transition-slow);
+}
+
+.panel03 .item:hover:after {
+    border-width: 0 0 60px 60px;    
+    border-color: transparent transparent var(--brown) transparent;
+}
+
+.panel03 .item:before {
+    content: "MORE";
+    position: absolute;
+    right: 8px;
+    bottom: 16px;
+    z-index: 2;
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transform: rotate(-45deg);
+    transition: var(--transition-slow);
+}
+
+.panel03 .item:hover:before {
+    right: 4px;
+    bottom: 10px;
+}
+
+.panel03 .item img {
+    transition: 0.6s ease;
+}
+
+.panel03 a:hover img {
+    transform: scale(1.05);
+}
+
+.panel03 .item p {
+    color: var(--black);
+}
+
+.panel03 .grid2_1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+/* =========================================================
+   Modal
+========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: var(--transition-base);
+}
+
+.modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(var(--rgb-pure-black), .7);
+    display: none;
+    z-index: 9998;
+}
+
+.modal-overlay.is-open {
+    display: block;
+}
+
+.modal-content {
+    width: min(900px, 90vw);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    opacity: 0;
+    transition: var(--transition-base);
+    background-color: var(--white);
+    padding: 3rem;
+}
+
+.modal.is-open .modal-content {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.modal-left {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.modal-left img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
+}
+
+.modal-link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-text {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    background: rgba(var(--rgb-pure-black), 0.4);
+    transition: var(--transition-base);
+}
+
+.modal-left:hover:before {
+    opacity: 0.5;
+}
+
+.modal-left:hover .hover-text {
+    opacity: 1;
+}
+
+.modal-right p {
+    margin-bottom: 1.5rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: var(--black);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.list_skill {
+    display: inline-block;
+}
+
+.list_skill li {
+    display: inline-block;
+    color: var(--white);
+    background-color: var(--brown);
+    padding: 0 0.5rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .panel03 .grid2 {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        height: 80vh;    
+        overflow-y: auto; 
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) rgba(var(--rgb-pure-white), 0.05);
+    }
+  
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hover-text {
+        opacity: 1;
+    }
+
+    .modal-right {
+        overflow: hidden;
+    }
+
+    .modal-right p,
+    .modal-right .list_skill {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity var(--transition-base), transform var(--transition-base), max-height var(--transition-base);
+    }
+
+    .modal-right.is-open p {
+        margin-top: 1rem;
+    }
+
+    .modal-right.is-open p,
+    .modal-right.is-open .list_skill {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+    }
+
+    .modal-right::before {
+        content: "DETAIL";
+        display: block;
+        padding: 1rem;
+        cursor: pointer;
+        background: var(--gold);
+        color: var(--black);
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+}
+
+/* =========================================================
+   Tab
+========================================================= */
+
+.tab {
+    display: flex;
+}
+
+.tab_btn {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+}
+
+.tab_bk {
+    background-color: var(--white);
+    padding: 2rem 4rem;
+    width: 100%;
+}
+
+.tab_contents {
+    position: relative;
+}
+
+.tab_btn li {
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.tab_btn li.active,
+.tab_btn li:hover {
+    color: var(--white);
+    background-color: var(--brown);
+}
+
+.tab_panel {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    transition: 0.3s;
+}
+
+.tab_panel.active {
+    visibility: visible;
+    opacity: 1;
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .tab {
+        flex-direction: column;
+    }
+
+    .tab_btn {   
+        width: auto;
+        display: inline-block;
+    }
+
+    .tab_btn li {
+        display: inline-block;
+    }
+
+    .tab_bk {
+        padding: 2rem;
+    }
+}
+
+/* =========================================================
+   Contents & Typography
+========================================================= */
+
+.contents {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    letter-spacing: 5px;
+    color: var(--gold);
+}
+
+.mainv_caption {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+/* =========================================================
+   Header
+========================================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+
+#logo {
+    color: var(--white);
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+}
+
+.nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav a {
+    color: var(--white);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: var(--red);
+}
+
+@media screen and (max-width: 768px) {
+    #logo {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+
+    .header {
+        padding: 1rem;
+        background-color: var(--gold-hover);
+    }
+
+    .nav ul {
+        gap: 1rem;
+    }
+
+    .nav a {
+        font-size: 0.6rem;
+    }
+}
+
+/* =========================================================
+   GSAP Animation
+========================================================= */
+
+.fadeUp {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* =========================================================
+   Footer
+========================================================= */
+
+#copy {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    color: rgba(var(--rgb-pure-white), 0.5);
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    #copy {
+        position: relative;
+        text-align: center;
+    }
+}
+
+/* ========================================
+    Flex grid system
+======================================== */
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.flex.start {
+    justify-content: flex-start;
+}
+.flex.clm2,
+.flex.clm3,
+.flex.clm4,
+.flex.clm5,
+.flex.clm6 {
+    flex-wrap: wrap;
+}
+
+.flex > * {
+    box-sizing: border-box;
+    margin: 0 0 1rem;
+}
+.flex.clm2 > * { width: 48%; }
+.flex.clm3 > * { width: calc(100% / 3); }
+.flex.clm4 > * { width: 23%; }
+.flex.clm5 > * { width: 18%; }
+.flex.clm6 > * { width: 15%; }
+
+.flex .clm1_4 { width: 23%; }
+.flex .clm3_4 { width: 75%; }
+.flex .clm1_3 { width: 33%; }
+.flex .clm2_3 { width: 65%; }
