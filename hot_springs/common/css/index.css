@@ -223,6 +223,7 @@ ol {
   padding-right: 10%;
   top: 60%;
   transform: translateY(-60%);
+  height: 20rem;
 }
 
 .mainv_caption h1 {
