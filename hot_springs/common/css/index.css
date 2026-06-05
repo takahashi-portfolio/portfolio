@@ -240,14 +240,16 @@ ol {
 ========================================== */
 #concept {
   padding: 4rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  justify-items: center;
 }
 
 #concept img {
-  height: 380px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .vertical-text {
@@ -957,10 +959,7 @@ time b {
 
   .mainv_caption {right: 2rem;}
   .mainv_caption h1 {font-size: 18px;}
-    #concept {
-    display: grid;
-    place-items: center;
-  }
+  #concept {grid-template-columns: 1fr;}
   .vertical-text {
     font-size: 1.1rem;
     height: 20rem;
