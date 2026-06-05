@@ -1,0 +1,192 @@
+/* ========================================
+    Second setting
+======================================== */
+
+main {
+    padding-bottom: 3rem;
+}
+
+main h3 {
+    margin-top: 3rem;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
+}
+
+main:before,
+main:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+
+main:before {
+  width: 30rem;
+  height: 30rem;
+  background: rgba(79, 125, 115, 0.08);
+  top: -8rem;
+  right: -12rem;
+  transform: rotate(-20deg);
+}
+
+main:after {
+  width: 20rem;
+  height: 20rem;
+  background: rgba(79, 125, 115, 0.08);
+  bottom: -6rem;
+  left: -8rem;
+  transform: rotate(20deg);
+}
+
+@media screen and (max-width: 959px) {
+
+    main:before {
+        right: -15rem;
+    }
+
+}
+
+/* ========================================
+    About setting
+======================================== */
+
+#about .grid.clm2_1 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "paragraph image";
+}
+
+#about .grid.clm2_1 > div:first-child {
+    grid-area: paragraph;
+}
+
+#about .grid.clm2_1 > div:last-child {
+    grid-area: image;
+}
+
+#about .clm3 > div {
+    background-color: var(--lightgreen);
+    border: 2px solid var(--green);
+    padding: 2rem;
+}
+
+#about .clm3 > div h4 {
+    color: var(--darkgreen);
+}
+
+#about .clm3 > div p {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 959px) {
+
+    #about .grid.clm2_1 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "image"
+        "paragraph";
+        gap: 1rem;
+    }
+
+    .grid.clm3 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+}
+
+/* ========================================
+    Guide setting
+======================================== */
+
+#guide #an01,
+#guide #an02,
+#guide #an03 {
+  scroll-margin-top: 3rem;
+}
+
+/* ========================================
+    Doctor setting
+======================================== */
+
+#doctor h4 {
+    margin-top: 2rem;
+}
+
+/* ========================================
+    Facility setting
+======================================== */
+
+#facility .grid.clm2_1 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "paragraph image";
+}
+
+#facility .grid.clm2_1 > div:first-child {
+    grid-area: paragraph;
+}
+
+#facility .grid.clm2_1 > div:last-child {
+    grid-area: image;
+}
+
+/* ========================================
+    News setting
+======================================== */
+
+#news time {
+    display: inline-block;
+    color: var(--darkgreen);
+    font-size: 0.8rem;
+}
+
+#news .cate01,
+#news .cate02,
+#news .cate03 {
+    display: inline-block;
+    width: 8rem;
+    background-color: var(--darkgreen);
+    color: var(--white);
+    padding: 0 0.3rem;
+    margin-right: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* ========================================
+    SP setting
+======================================== */
+
+@media screen and (max-width: 959px) {
+
+    #facility .grid.clm2_1 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "image"
+        "paragraph";
+        gap: 1rem;
+    }
+
+    #facility .grid.clm2_1 p {
+        margin-bottom: 0;
+    }
+
+}
+
+/* ========================================
+    Access setting
+======================================== */
+
+#access .img-cut {
+    width: 60%;
+    margin: auto;
+}
+
+@media screen and (max-width: 959px) {
+
+    #access .img-cut {
+        width: 100%;
+    }
+
+}

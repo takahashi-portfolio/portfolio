@@ -1,0 +1,294 @@
+/* =========================================================
+   Main visual
+========================================================= */
+.mainv {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.main_slider,
+.main_slider .slick-list,
+.main_slider .slick-track,
+.main_slider .slick-slide {
+  height: 100%;
+}
+
+.main_slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainv_caption {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: var(--darkgreen);
+}
+
+.mainv_caption p.catchcopy span {
+  font-family: var(--font);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.mainv_caption p span {
+  font-size: 1.1rem;
+  background-color: var(--white);
+  padding: 0.3rem 1rem;
+}
+
+/* =========================================================
+   about setting
+========================================================= */
+
+#about {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;    
+}
+
+#about:before {
+    content: "";
+    position: absolute;
+    width: clamp(20rem, 45vw, 40rem);
+    height: clamp(20rem, 45vw, 40rem);
+    background: rgba(79, 125, 115, 0.05);
+    border-radius:
+    60% 40% 70% 30% /
+    40% 60% 40% 60%;
+    top: -10rem;
+    right: -12rem;
+    z-index: -1;
+}
+
+#about .grid.clm2_1 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "paragraph image";
+}
+
+#about .grid.clm2_1 > div:first-child {
+    grid-area: paragraph;
+}
+
+#about .grid.clm2_1 > div:last-child {
+    grid-area: image;
+}
+
+
+/* =========================================================
+   news setting
+========================================================= */
+
+#news {
+    margin: 3rem 0;
+}
+
+.tab {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--lightgreen);
+}
+
+.tab a {
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    border: 2px solid var(--lightgreen);
+}
+
+.tab a.on {
+    border-bottom: 3px solid var(--darkgreen);
+    color: var(--darkgreen);
+}
+
+#news .list {
+    margin: 2rem 0;
+}
+
+#news .list li a {
+    position: relative;
+    display: block;
+    padding: 1rem 2.5rem 1rem 1rem;
+    background-image : linear-gradient(to right, var(--gray), var(--gray) 2px, transparent 2px, transparent 8px);
+    background-size: 8px 1px;          
+    background-position: left bottom;  
+    background-repeat: repeat-x;     
+    transition: .6s;  
+}
+
+#news .list li a:after {
+    position: absolute;
+    content: "›";
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--gray);    
+    transition: .6s;    
+} 
+
+#news .list a:hover {
+    background-color: var(--gray);
+    transition: .6s;
+}
+
+#news .list a:hover:after {
+    right: 0.5rem;
+    color: var(--darkgreen);
+    transition: .6s;
+}
+
+
+#news .list time {
+    display: inline-block;
+    color: var(--darkgreen);
+    font-weight: bold;
+    width: 8rem;
+}
+
+#news .list .cate01,
+#news .list .cate02,
+#news .list .cate03 {
+    display: inline-block;
+    width: 8rem;
+    background-color: var(--darkgreen);
+    color: var(--white);
+    padding: 0 0.3rem;
+    margin-right: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* =========================================================
+   guide setting
+========================================================= */
+
+#guide {
+    background-color: var(--lightgreen);
+    background-image:
+    linear-gradient(var(--gray) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gray) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    padding: 2rem 0 3rem;
+}
+
+.slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 0;
+}
+
+.slide > div {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.slide > div > div {
+    background-color: var(--white);
+    padding: 2rem;
+}
+
+/* ========================================
+   SP Layout
+======================================== */
+
+@media screen and (max-width: 959px) {
+    .mainv {
+        height: auto;
+    }
+
+    .mainv .slick-slide img {
+        width: 100%;
+        min-width: auto;
+        min-height: 80vh;
+        height: auto;
+    }
+
+    .mainv_caption {
+        left: 3%;
+    }
+
+    .mainv_caption p.catchcopy span {
+        font-size: 1.3rem;
+    }
+
+    .mainv_caption p span {
+        padding: 0.3rem;
+        font-size: 0.9rem;       
+    }
+
+    #about .grid.clm2_1 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "image"
+        "paragraph";
+    }
+
+    #about .lnk {
+        display: flex;
+        justify-content: center;
+    }
+
+    .slider-track {
+    aspect-ratio: auto;
+    }
+
+    .slide {
+        position: static;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .slide.active {
+        display: grid;
+        opacity: 1;
+    }
+
+    .slide > div:last-child {
+        display: none;
+    }
+
+    #guide .lnk {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .tab {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+    }
+
+    .tab a.on {
+        border: 2px solid var(--darkgreen);
+        background-color: var(--darkgreen);
+        color: var(--white);
+    }
+
+    #news .list {
+        margin-top: 1rem;
+    }
+
+    #news .list li a {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+}
