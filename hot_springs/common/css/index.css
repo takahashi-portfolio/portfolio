@@ -950,8 +950,9 @@ time b {
 @media screen and (max-width: 959px) {
   html {font-size: 14px;}
 
+  .mainv_caption {right: 2rem;}
   .mainv_caption h1 {font-size: 18px;}
-  .vertical-text {font-size: 1.1rem;}
+  .vertical-text {font-size: 1.1rem; height: 20rem;}
 
   #concept {flex-direction: column;}
 
