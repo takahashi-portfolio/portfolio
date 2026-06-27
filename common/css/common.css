@@ -766,7 +766,7 @@ ul.list1 li:before {
 }
 
 .nav a:hover {
-    color: var(--black);
+    color: var(--brown);
 }
 
 @media screen and (max-width: 768px) {
