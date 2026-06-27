@@ -124,43 +124,49 @@
         </div>          
     </section>
 
-    <section class="panel panel03" id="work">
-        <div class="panel_inner">
-        <h2>Works</h2>
-        <p>コーディングやアニメーション実装、デザイン制作のスキルを活かして制作した作品を掲載しています。</p>
+  <section class="panel panel03" id="work">
+    <div class="panel_inner">
+      <h2>Works</h2>
+      <p>コーディングやアニメーション実装、デザイン制作のスキルを活かして制作した作品を掲載しています。</p>
 
-        <div>
-            <div class="grid2">
+      <div class="works-slider">
+        <div class="works-slider__viewport">
+          <div class="works-slider__track">
 
             <div class="item js-open-modal" data-modal="hospital">
-            <h3>○○温泉</h3>
-            <div class="flex clm2">
-                <div>
-                <img src="common/img/work01.png" alt="">
-                </div>
-                <div>
-                <p>架空の温泉サイトを作成しました。</p>
-                </div>
-            </div>
+              <h3>○○温泉</h3>
+              <div class="flex clm2">
+                <div><img src="common/img/work01.png" alt=""></div>
+                <div><p>架空の温泉サイトを作成しました。</p></div>
+              </div>
             </div>
 
             <div class="item js-open-modal" data-modal="onsen">
-            <h3>○○クリニック</h3>
-            <div class="flex clm2">
-                <div>
-                <img src="common/img/work02.png" alt="">
-                </div>
-                <div>
-                <p>架空のクリニックサイトを作成しました。</p>
-                </div>
-            </div>
+              <h3>○○クリニック</h3>
+              <div class="flex clm2">
+                <div><img src="common/img/work02.png" alt=""></div>
+                <div><p>架空のクリニックサイトを作成しました。</p></div>
+              </div>
             </div>
 
+            <div class="item js-open-modal" data-modal="game">
+              <h3>AURORA CHRONICLE</h3>
+              <div class="flex clm2">
+                <div><img src="common/img/work03.png" alt=""></div>
+                <div><p>架空のゲーム公式サイトを作成しました。</p></div>
+              </div>
             </div>
+
+          </div>
         </div>
 
+        <div class="works-slider__pagination">
+          <div class="works-slider__dots"></div>
+          <span class="works-slider__count">01 / 02</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
   </main>
 
@@ -192,6 +198,7 @@
             <li>Hamburger menu</li>
             <li>Tab</li>
             <li>Slick</li>
+            <li>Responsive</li>
             </ul>
         </div>
         </div>
@@ -225,12 +232,47 @@
             <li>Tab</li>
             <li>Slideshow</li>
             <li>Slick</li>
+            <li>Responsive</li>
             </ul>
         </div>
         </div>
     </div>
     </div>        
 
+    <!-- ③ game -->
+    <div class="modal" id="modal-game">
+      <div class="modal-content">
+        <button class="modal-close js-modal-close">×</button>
+
+        <div class="modal-grid">
+          <div class="modal-left">
+            <a href="game/" class="modal-link">
+              <img src="common/img/work03.png" alt="">
+              <span class="hover-text">VIEW PAGE</span>
+            </a>
+          </div>
+
+          <div class="modal-right">
+            <p>
+              ダークファンタジーRPGをテーマに、作品の世界観を伝えることを意識して制作した架空のゲーム公式サイトです。<br>
+              AI生成画像を使用し、既存IPには依存せず、キャラクター紹介・システム紹介・モーダル・タブ切り替え・ページトップ演出などを実装しました。<br>
+              企画からデザイン、コーディングまで一貫して制作し、エンタメサイトらしい演出表現に取り組んでいます。
+            </p>
+            <ul class="list_skill">
+              <li>Design</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>jQuery</li>
+              <li>Modal window</li>
+              <li>Tab</li>
+              <li>Animation</li>
+              <li>Responsive</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <footer>
 
@@ -253,7 +295,7 @@ const mm = gsap.matchMedia();
 /* ========================================
    Horizontal Scroll (PC only)
 ======================================== */
-mm.add("(min-width: 1025px)", () => {
+mm.add("(min-width: 769px)", () => {
   const panels = gsap.utils.toArray(".panel");
 
   gsap.to(panels, {
@@ -278,7 +320,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(anchor.getAttribute("href"));
     if (!target) return;
 
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 768) {
       gsap.to(window, {
         duration: 0.3,
         ease: "power1.out",
@@ -354,6 +396,66 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 })();
 
 /* ========================================
+   Works Slider
+======================================== */
+(function worksSlider() {
+  const slider = document.querySelector(".works-slider");
+  if (!slider) return;
+
+  const track = slider.querySelector(".works-slider__track");
+  const items = Array.from(slider.querySelectorAll(".item"));
+  const count = slider.querySelector(".works-slider__count");
+  const dotsWrap = slider.querySelector(".works-slider__dots");
+
+  let index = 0;
+
+  const visibleCount = () => window.innerWidth <= 768 ? 1 : 2;
+  const maxIndex = () => Math.max(items.length - visibleCount(), 0);
+  const formatNum = (num) => String(num).padStart(2, "0");
+
+  function createDots() {
+    dotsWrap.innerHTML = "";
+
+    for (let i = 0; i <= maxIndex(); i++) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "works-slider__dot";
+      dot.setAttribute("aria-label", `${i + 1}ページ目へ`);
+
+      dot.addEventListener("click", () => {
+        index = i;
+        update();
+      });
+
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function update() {
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const itemWidth = items[0].getBoundingClientRect().width;
+    const move = (itemWidth + gap) * index;
+
+    track.style.transform = `translateX(-${move}px)`;
+
+    count.textContent = `${formatNum(index + 1)} / ${formatNum(maxIndex() + 1)}`;
+
+    dotsWrap.querySelectorAll(".works-slider__dot").forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    index = Math.min(index, maxIndex());
+    createDots();
+    update();
+  });
+
+  createDots();
+  update();
+})();
+
+/* ========================================
    Modal
 ======================================== */
 (function modal() {
@@ -377,7 +479,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 ======================================== */
 (function mobileAccordion() {
   $(".modal-right").on("click", function () {
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 768) {
       $(this).toggleClass("is-open");
     }
   });
