@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURORA CHRONICLE | OFFICIAL SITE</title>
+
+  <link rel="stylesheet" href="common/css/index.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="common/js/game.js"></script>
+</head>
+
+<body>
+
+  <button class="menu-btn" type="button">MENU</button>
+
+  <nav class="overlay-menu">
+    <ul>
+      <li><a href="#story">STORY</a></li>
+      <li><a href="#character">CHARACTER</a></li>
+      <li><a href="#system">SYSTEM</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero" class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__particles"></div>
+    <div class="hero__shade"></div>
+
+    <div class="hero__inner">
+      <p class="hero__sub">Dark Fantasy RPG</p>
+      <h1 class="hero__title">AURORA<br>CHRONICLE</h1>
+      <p class="hero__catch">世界は、記憶によって再構築される。</p>
+      <p class="hero__scroll">SCROLL</p>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="story" class="section story">
+      <div class="story__bg"></div>
+      <div class="section__inner">
+        <p class="section__label">01</p>
+        <h2 class="section__title">STORY</h2>
+        <p class="story__text">
+          記憶が失われるたび、世界は再構築される。<br>
+          かつて光に満ちていた王国は、いま静かな夜に沈んでいた。<br>
+          少年は失われた記憶を辿り、世界の真実へと近づいていく。
+        </p>
+      </div>
+    </section>
+
+    <section id="character" class="section character">
+      <div class="section__inner">
+        <p class="section__label">02</p>
+        <h2 class="section__title">CHARACTER</h2>
+
+        <div class="character__list">
+          <button class="character-card" type="button" data-target="modal1">
+            <span class="character-card__img">
+              <img src="common/img/character/alto.png" alt="アルト">
+            </span>
+            <span class="character-card__name">アルト</span>
+            <span class="character-card__role">記憶を失った剣士</span>
+          </button>
+
+          <button class="character-card" type="button" data-target="modal2">
+            <span class="character-card__img">
+              <img src="common/img/character/lilia.png" alt="リリア">
+            </span>
+            <span class="character-card__name">リリア</span>
+            <span class="character-card__role">記憶を操る魔導師</span>
+          </button>
+
+          <button class="character-card" type="button" data-target="modal3">
+            <span class="character-card__img">
+              <img src="common/img/character/noah.png" alt="ノア">
+            </span>
+            <span class="character-card__name">ノア</span>
+            <span class="character-card__role">世界の鍵を握る少女</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="modal1">
+      <div class="modal__content">
+        <button class="close" type="button">×</button>
+        <div class="modal__visual">
+          <img src="common/img/character/alto.png" alt="アルト">
+        </div>
+        <div class="modal__text">
+          <p class="modal__label">SWORDSMAN</p>
+          <h3>アルト</h3>
+          <p>失われた記憶を追う若き剣士。青い光を宿す剣を手に、崩れゆく世界を旅する。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal2">
+      <div class="modal__content">
+        <button class="close" type="button">×</button>
+        <div class="modal__visual">
+          <img src="common/img/character/lilia.png" alt="リリア">
+        </div>
+        <div class="modal__text">
+          <p class="modal__label">MAGE</p>
+          <h3>リリア</h3>
+          <p>紫の魔法を操る魔導師。記憶の欠片を読み解き、アルトを導く存在。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal3">
+      <div class="modal__content">
+        <button class="close" type="button">×</button>
+        <div class="modal__visual">
+          <img src="common/img/character/noah.png" alt="ノア">
+        </div>
+        <div class="modal__text">
+          <p class="modal__label">KEY PERSON</p>
+          <h3>ノア</h3>
+          <p>白い光に包まれた少女。世界が再構築される理由を知る、ただ一人の存在。</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="system" class="section system">
+      <div class="section__inner">
+        <p class="section__label">03</p>
+        <h2 class="section__title">SYSTEM</h2>
+
+        <div class="tabs">
+          <button class="tab active" type="button" data-tab="1">BATTLE</button>
+          <button class="tab" type="button" data-tab="2">GROWTH</button>
+          <button class="tab" type="button" data-tab="3">SKILL</button>
+        </div>
+
+        <div class="tab-content active" id="tab1">
+          <div class="system-panel system-panel--battle">
+            <div>
+              <h3>BATTLE</h3>
+              <p>記憶の力を解放し、属性を連携させて戦うリアルタイムバトル。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab2">
+          <div class="system-panel system-panel--growth">
+            <div>
+              <h3>GROWTH</h3>
+              <p>スキルツリーを解放し、キャラクターの記憶と能力を成長させる。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab3">
+          <div class="system-panel system-panel--skill">
+            <div>
+              <h3>SKILL</h3>
+              <p>魔法陣から放たれる奥義で、戦況を一変させるスキル演出。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <a href="#" id="page-top">
+    <img src="common/img/page-top.png" alt="ページトップへ">
+    <span>PAGE TOP</span>
+  </a>
+
+  <footer class="footer">
+    <p>© AURORA CHRONICLE</p>
+  </footer>
+
+</body>
+</html>
