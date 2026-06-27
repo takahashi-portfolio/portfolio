@@ -406,7 +406,7 @@ ul.list1 li:before {
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:.8rem;
+    gap:0.5rem;
     margin-top:1rem;
 }
 
