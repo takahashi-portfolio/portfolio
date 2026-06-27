@@ -77,7 +77,7 @@ img {
 h2 {
     position: relative;
     font-size: 1.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     letter-spacing: 4px;
 }
 
@@ -297,7 +297,7 @@ ul.list1 li:before {
 
 .panel03 p {
     color: var(--white);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .panel03 .grid2 {
@@ -367,6 +367,10 @@ ul.list1 li:before {
 
 .panel03 .item p {
     color: var(--black);
+}
+
+.panel03 .flex.clm2 > * {
+    margin-bottom: 0;
 }
 
 .panel03 .grid2_1 {
